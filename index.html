@@ -419,6 +419,7 @@
       signedTitle: 'This contract has already been signed',
       signedWho: 'Signed by {name} on {date}.',
       signedHelp: 'If this is not right, please contact {email}.',
+      'signedHelp@parent': 'Only one parent or guardian signs for each student, so no further signature is needed. If this is not right, please contact {email}.',
       invalidTitle: 'This link is not valid',
       invalidBody: 'Please open the link exactly as it appears in the e-mail from the school. If it still does not work, contact {email}.',
       voidedTitle: 'This link is no longer active',
@@ -492,6 +493,7 @@
       signedTitle: '이미 서명이 완료된 서약서입니다',
       signedWho: '{name} 님이 {date}에 서명하셨습니다.',
       signedHelp: '사실과 다르다면 {email}에 문의해 주십시오.',
+      'signedHelp@parent': '학생 한 명당 보호자 한 분만 서명하므로 추가 서명은 필요하지 않습니다. 사실과 다르다면 {email}에 문의해 주십시오.',
       invalidTitle: '유효하지 않은 링크입니다',
       invalidBody: '학교에서 보낸 이메일의 링크를 그대로 열어 주십시오. 계속 열리지 않으면 {email}에 문의해 주십시오.',
       voidedTitle: '더 이상 사용할 수 없는 링크입니다',
@@ -565,6 +567,7 @@
       signedTitle: '此协议已签署',
       signedWho: '{name} 已于 {date} 签署。',
       signedHelp: '如有疑问，请联系 {email}。',
+      'signedHelp@parent': '每位学生只需一位家长或监护人签名，无需再次签名。如有疑问，请联系 {email}。',
       invalidTitle: '链接无效',
       invalidBody: '请直接打开学校邮件中的链接。如仍无法打开，请联系 {email}。',
       voidedTitle: '此链接已失效',
@@ -1051,6 +1054,13 @@
     if (done) return;
     setBusy(false);
     res = res || {};
+    if (res.code === 'ALREADY_SIGNED' && !res.sameSigner) {
+      // Someone else (e.g. the other parent) signed first: their signature stands, this one is not recorded.
+      done = true;
+      resultData = { signedBy: res.signedBy, signedAt: res.signedAt };
+      show('signed', true);
+      return;
+    }
     if (res.ok || res.code === 'ALREADY_SIGNED') {
       done = true;
       resultData = res.ok ? res : { signedAt: res.signedAt, complete: res.complete, emailedTo: [] };
