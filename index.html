@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Boarding Community Contract | Branksome Hall Asia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #3D5E41;       /* BHA Primary Green */
+    --green-dark: #2E4832;
+    --purple: #655FA3;      /* BHA Purple */
+    --purple-dark: #4A4585;
+    --purple-tint: #EFEEF6;
+    --black: #3F414A;       /* BHA Black — body text */
+    --muted: #5C5E66;       /* darker than BHA Grey so small text passes WCAG AA */
+    --line: #D6D5DD;
+    --lime: #BBD86B;        /* accent only, never text */
+    --red: #BC3219;         /* BHA Birch Red — errors */
+    --red-tint: #FBEDEA;
+    --bg: #F5F5F5;
+    --card: #FFFFFF;
+    --ink: #1B1D24;
+    --radius: 10px;
+    --font: 'Montserrat', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'PingFang SC', 'Heiti SC', 'Microsoft YaHei', Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--black); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+  :lang(ko) body, :lang(zh) body { word-break: keep-all; }
+  a { color: var(--purple-dark); }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--purple-dark); outline-offset: 2px; }
+  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .skip { position: absolute; left: 8px; top: -60px; background: var(--card); padding: 8px 14px; border-radius: 6px; z-index: 10; }
+  .skip:focus { top: 8px; }
+  [hidden] { display: none !important; }
+  .test-ribbon { background: #FFC20E; color: #3F414A; text-align: center; font-weight: 700; font-size: 14px; padding: 6px 16px; }
+
+  /* Header */
+  .topbar { background: var(--card); border-bottom: 4px solid var(--purple); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  .topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+  .logo { height: 46px; width: auto; display: block; }
+  .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--card); }
+  .lang button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); min-height: 36px; }
+  .lang button[aria-pressed="true"] { background: var(--purple); color: #fff; }
+  .banner { display: block; width: 100%; height: auto; border-radius: var(--radius) var(--radius) 0 0; }
+
+  main { padding: 20px 0 48px; }
+  main:focus { outline: none; }
+  .card { background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 18px; }
+  .card-pad { padding: 24px; }
+  .card-accent { border-top: 8px solid var(--green); }
+
+  h1 { font-size: 26px; line-height: 1.25; font-weight: 800; color: var(--purple); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 12px; }
+  :lang(ko) h1, :lang(zh) h1 { text-transform: none; letter-spacing: 0; }
+  .lead { margin: 0; color: var(--black); }
+
+  .student { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0 0; padding: 0; }
+  .student div { background: var(--purple-tint); border-radius: 8px; padding: 10px 14px; min-width: 0; }
+  .student dt { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  :lang(ko) .student dt, :lang(zh) .student dt { text-transform: none; }
+  .student dd { margin: 2px 0 0; font-weight: 700; color: var(--ink); font-size: 17px; }
+
+  .steps { counter-reset: s; list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+  .steps li { counter-increment: s; position: relative; padding-left: 42px; min-height: 30px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .note { margin: 16px 0 0; padding: 12px 14px; border-left: 4px solid var(--lime); background: #F6FAEB; border-radius: 0 8px 8px 0; font-size: 15px; }
+
+  /* Contract text */
+  .contract { font-size: 15.5px; }
+  .contract-title { font-size: 20px; font-weight: 800; color: var(--black); margin: 0 0 8px; }
+  .c-h1 { font-size: 19px; font-weight: 700; color: var(--purple); margin: 28px 0 8px; line-height: 1.3; scroll-margin-top: 12px; }
+  .c-h2 { font-size: 16px; font-weight: 700; color: var(--green); margin: 18px 0 4px; }
+  .c-p { margin: 8px 0; }
+  .c-quote { margin: 12px 0; padding: 4px 0 4px 16px; border-left: 4px solid var(--purple); font-weight: 500; }
+  .c-ul { margin: 6px 0 10px; padding-left: 22px; }
+  .c-ul li { margin: 4px 0; }
+  .c-ul li::marker { color: var(--purple); }
+  .table-scroll { overflow-x: auto; }
+  .c-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14.5px; }
+  .c-table th, .c-table td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .c-table thead th { background: var(--purple-tint); color: var(--ink); font-weight: 700; }
+  .c-levels tbody th { white-space: nowrap; font-weight: 700; color: var(--purple-dark); }
+  .c-routine-m { display: none; }
+
+  /* Form */
+  .sign h2 { font-size: 21px; font-weight: 800; color: var(--purple); margin: 0 0 8px; text-transform: uppercase; letter-spacing: .02em; }
+  :lang(ko) .sign h2, :lang(zh) .sign h2 { text-transform: none; letter-spacing: 0; }
+  .declaration { font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .declaration-tr { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .field { margin: 0 0 22px; }
+  .field > label, .legend { display: block; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  fieldset { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+  legend { padding: 0; }
+  .hint { font-size: 14px; color: var(--muted); margin: -2px 0 8px; }
+  .input { width: 100%; max-width: 460px; padding: 11px 12px; border: 1.5px solid #8C8D95; border-radius: 8px; background: #fff; min-height: 46px; }
+  .input:focus-visible { border-color: var(--purple-dark); }
+  .input[aria-invalid="true"] { border-color: var(--red); }
+  .checks { display: grid; gap: 10px; }
+  .check, .radio { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 8px; cursor: pointer; background: #fff; }
+  .check:hover, .radio:hover { border-color: var(--purple); }
+  .check input, .radio input { width: 22px; height: 22px; margin: 1px 0 0; flex: 0 0 auto; accent-color: var(--green); cursor: pointer; }
+  .radios { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; max-width: 640px; }
+  .group-invalid .check, .group-invalid .radio { border-color: var(--red); }
+  .error { color: var(--red); font-weight: 600; font-size: 14.5px; margin: 6px 0 0; }
+  .error::before { content: "! "; font-weight: 800; }
+  .error-summary { border: 2px solid var(--red); background: var(--red-tint); border-radius: 8px; padding: 14px 16px; margin: 0 0 20px; }
+  .error-summary h3 { margin: 0 0 6px; font-size: 16px; color: var(--red); }
+  .error-summary ul { margin: 0; padding-left: 20px; }
+  .error-summary a { color: var(--red); font-weight: 600; }
+
+  .pad-wrap { position: relative; border: 2px dashed #8C8D95; border-radius: 10px; background: #fff; max-width: 640px; }
+  .pad-wrap.invalid { border-color: var(--red); border-style: solid; }
+  .pad-wrap.has-ink { border-style: solid; border-color: var(--purple); }
+  #sigCanvas { display: block; width: 100%; height: 200px; touch-action: none; cursor: crosshair; border-radius: 8px; }
+  .pad-line { position: absolute; left: 24px; right: 24px; bottom: 44px; border-bottom: 1.5px solid #B9BAC2; pointer-events: none; }
+  .pad-x { position: absolute; left: 10px; bottom: 46px; color: #5C5E66; font-weight: 700; pointer-events: none; }
+  .pad-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #6E7078; pointer-events: none; font-size: 15px; padding: 0 20px; text-align: center; }
+  .pad-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; border: 1.5px solid transparent; padding: 10px 18px; min-height: 44px; font-weight: 700; cursor: pointer; text-decoration: none; }
+  .btn-sec { background: #fff; border-color: #8C8D95; color: var(--black); }
+  .btn-sec:hover { border-color: var(--purple); color: var(--purple-dark); }
+  .btn-sec:disabled { opacity: .45; cursor: not-allowed; }
+  .btn-primary { background: var(--green); color: #fff; font-size: 17px; padding: 14px 28px; min-height: 52px; width: 100%; max-width: 360px; }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-primary:disabled { opacity: .7; cursor: progress; }
+  .spinner { width: 18px; height: 18px; border: 3px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } html { scroll-behavior: auto; } }
+  .submit-row { margin-top: 8px; }
+  .status { margin: 12px 0 0; font-size: 15px; }
+  .status.warn { color: #6b4e00; background: #FFF4D1; padding: 10px 12px; border-radius: 8px; }
+  .status.err { color: var(--red); background: var(--red-tint); padding: 10px 12px; border-radius: 8px; font-weight: 600; }
+  .privacy { font-size: 13.5px; color: var(--muted); margin: 18px 0 0; }
+  .date-val { font-weight: 700; color: var(--ink); }
+
+  /* Result screens */
+  .result { text-align: center; padding: 40px 24px; }
+  .result-icon { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; color: #fff; }
+  .ok { background: var(--green); }
+  .spinner-lg { width: 40px; height: 40px; border-width: 4px; border-color: var(--purple-tint); border-top-color: var(--purple); margin: 0 auto 14px; }
+  .warn-i { background: var(--purple); }
+  .result h1 { font-size: 22px; }
+  .result p { margin: 8px auto; max-width: 540px; }
+  footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 15.5px; }
+    .card-pad { padding: 18px 16px; }
+    h1 { font-size: 21px; }
+    .logo { height: 40px; }
+    .topbar-in { padding: 10px 16px; }
+    .lang button { padding: 6px 10px; }
+    #sigCanvas { height: 180px; }
+    .c-routine { display: none !important; }
+    .c-routine-m { display: block; border-left: 3px solid var(--lime); padding-left: 12px; }
+    /* Tables become stacked cards on phones */
+    .c-table, .c-table tbody, .c-table tr, .c-table td, .c-table tbody th { display: block; width: 100%; }
+    .c-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .c-table tr { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 10px; overflow: hidden; }
+    .c-table td, .c-table tbody th { border: 0; border-top: 1px solid var(--line); }
+    .c-table tr > :first-child { border-top: 0; }
+    .c-table td::before { content: attr(data-label); display: block; font-size: 12.5px; font-weight: 700; color: var(--purple-dark); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 2px; }
+    .c-levels tbody th { background: var(--purple-tint); }
+  }
+  @media print {
+    .topbar .lang, .sign, .skip, footer { display: none !important; }
+    body { background: #fff; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+
+<div class="test-ribbon" id="testRibbon" role="note" data-i18n="testRibbon" hidden></div>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <img class="logo" src="data:image/png;base64,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" alt="Branksome Hall Asia" width="165" height="46">
+    <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
+      <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-lang="ko" aria-pressed="false" lang="ko">한국어</button>
+      <button type="button" data-lang="zh" aria-pressed="false" lang="zh">中文</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap" tabindex="-1">
+  <noscript>
+    <div class="card card-pad"><p>This page needs JavaScript. Please enable it or use a different browser. / 이 페이지는 JavaScript가 필요합니다. / 此页面需要启用 JavaScript。</p></div>
+  </noscript>
+
+  <!-- ── Open: read and sign ───────────────────────────────────────────── -->
+  <section id="view-open" hidden>
+    <div class="card card-accent">
+      
+      <div class="card-pad">
+        <h1 id="openTitle" tabindex="-1" data-i18n="pageTitle">Boarding Community Contract</h1>
+        <p class="lead" data-i18n="lead">Please read this contract with your child and sign it online.</p>
+        <dl class="student">
+          <div><dt data-i18n="student">Student</dt><dd id="stuName"></dd></div>
+          <div><dt data-i18n="signingAs">Signing as</dt><dd data-i18n="roleName"></dd></div>
+          <div id="stuGradeBox"><dt data-i18n="grade">Grade</dt><dd id="stuGrade"></dd></div>
+          <div id="stuHouseBox"><dt data-i18n="house">House</dt><dd id="stuHouse"></dd></div>
+        </dl>
+        <ol class="steps">
+          <li data-i18n="step1">Read the contract below together with your child.</li>
+          <li data-i18n="step2">Tick the three confirmations and enter your name.</li>
+          <li data-i18n="step3">Sign in the box with your mouse, trackpad or finger, then press Submit.</li>
+        </ol>
+        <p class="note" id="englishNote" data-i18n="englishNote" hidden></p>
+      </div>
+    </div>
+
+    <article class="card card-pad contract" lang="en" aria-labelledby="contractTitle">
+      <h2 class="contract-title" id="contractTitle">Boarding Community Contract</h2>
+      <div id="contractBody"></div>
+    </article>
+
+    <form id="signForm" class="card card-pad sign" novalidate aria-labelledby="signTitle">
+      <h2 id="signTitle" data-i18n="signHeading">Parent / Guardian Signature</h2>
+      <p class="declaration" lang="en" id="declText"></p>
+      <p class="declaration-tr" id="declTr" data-i18n="declarationTr" hidden></p>
+
+      <div class="error-summary" id="errorSummary" role="alert" tabindex="-1" hidden>
+        <h3 data-i18n="errSummary">Please fix the following:</h3>
+        <ul id="errorList"></ul>
+      </div>
+
+      <fieldset id="acksGroup" aria-describedby="acks-error">
+        <legend class="legend" data-i18n="acksLegend">Please confirm</legend>
+        <div class="checks" id="ackList"></div>
+        <p class="error" id="acks-error" hidden></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="name" data-i18n="nameLabel">Your full name</label>
+        <p class="hint" id="name-hint" data-i18n="nameHint">As you would write it on a paper form.</p>
+        <input class="input" id="name" name="name" type="text" autocomplete="name" maxlength="80" aria-describedby="name-hint name-error" required>
+        <p class="error" id="name-error" hidden></p>
+      </div>
+
+      <fieldset id="relGroup" aria-describedby="relationship-error">
+        <legend class="legend" data-i18n="relLabel">Relationship to the student</legend>
+        <div class="radios" id="relRadios"></div>
+        <p class="error" id="relationship-error" hidden></p>
+        <div class="field" id="relOtherBox" hidden style="margin:12px 0 0">
+          <label for="relOther" data-i18n="relOtherLabel">Please specify</label>
+          <input class="input" id="relOther" type="text" maxlength="40" aria-describedby="relationshipOther-error">
+          <p class="error" id="relationshipOther-error" hidden></p>
+        </div>
+      </fieldset>
+
+      <div class="field" id="sigField">
+        <span class="legend" id="sigLabel" data-i18n="sigLabel">Signature</span>
+        <p class="hint" id="sigHelp"></p>
+        <div id="drawBox">
+          <div class="pad-wrap" id="padWrap">
+            <canvas id="sigCanvas" tabindex="-1" role="img" aria-describedby="signature-error" data-i18n-aria="sigCanvasLabel" aria-label="Signature area"></canvas>
+            <span class="pad-x" aria-hidden="true">×</span>
+            <span class="pad-line" aria-hidden="true"></span>
+            <span class="pad-ph" id="padPh" data-i18n="sigPlaceholder" aria-hidden="true">Sign here</span>
+          </div>
+          <div class="pad-actions">
+            <button type="button" class="btn btn-sec" id="sigUndo" data-i18n="sigUndo" disabled>Undo</button>
+            <button type="button" class="btn btn-sec" id="sigClear" data-i18n="sigClear" disabled>Clear</button>
+          </div>
+        </div>
+        <p class="error" id="signature-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <span class="legend" data-i18n="dateLabel">Date</span>
+        <span class="date-val" id="today"></span>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary" id="submitBtn"><span class="spinner" id="spin" hidden></span><span id="submitText" data-i18n="submit">Submit signature</span></button>
+        <p class="status" id="submitStatus" role="status" aria-live="polite" hidden></p>
+      </div>
+      <p class="privacy" data-i18n="privacy">Your name, signature and the time of signing are stored securely by Branksome Hall Asia for boarding records.</p>
+    </form>
+  </section>
+
+  <!-- ── Result / state screens ─────────────────────────────────────────── -->
+  <section id="view-success" class="card card-accent" hidden>
+    <div class="result">
+      <div class="result-icon ok" aria-hidden="true">✓</div>
+      <h1 tabindex="-1" data-i18n="successTitle">Thank you — your signature has been received</h1>
+      <p id="successWhen"></p>
+      <p id="successMail"></p>
+      <p data-i18n="closeNote">You can now close this page.</p>
+    </div>
+  </section>
+
+  <section id="view-signed" class="card card-accent" hidden>
+    <div class="result">
+      <div class="result-icon ok" aria-hidden="true">✓</div>
+      <h1 tabindex="-1" data-i18n="signedTitle">This contract has already been signed</h1>
+      <p id="signedWho"></p>
+      <p id="signedHelp"></p>
+    </div>
+  </section>
+
+  <section id="view-invalid" class="card card-accent" hidden>
+    <div class="result">
+      <div class="result-icon warn-i" aria-hidden="true">!</div>
+      <h1 tabindex="-1" data-i18n="invalidTitle">This link is not valid</h1>
+      <p id="invalidBody"></p>
+    </div>
+  </section>
+
+  <section id="view-voided" class="card card-accent" hidden>
+    <div class="result">
+      <div class="result-icon warn-i" aria-hidden="true">!</div>
+      <h1 tabindex="-1" data-i18n="voidedTitle">This link is no longer active</h1>
+      <p id="voidedBody"></p>
+    </div>
+  </section>
+
+  <section id="view-loading" class="card card-accent" hidden>
+    <div class="result" role="status" aria-live="polite">
+      <div class="spinner spinner-lg" aria-hidden="true"></div>
+      <p data-i18n="loading">Loading the contract…</p>
+    </div>
+  </section>
+
+  <section id="view-error" class="card card-accent" hidden>
+    <div class="result">
+      <div class="result-icon warn-i" aria-hidden="true">!</div>
+      <h1 tabindex="-1" data-i18n="errorTitle">The page could not be loaded</h1>
+      <p id="errorBody"></p>
+      <p><a class="btn btn-sec" id="retryLink" href="#" data-i18n="tryAgain">Try again</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>Branksome Hall Asia · 234 Global Edu-ro, Daejeong-eup, Seogwipo-si, Jeju-do 63644</footer>
+
+<script>
+(function () {
+  'use strict';
+  var BOOT = null;
+  // Set by tools/build-public.py for the school-hosted page; empty when served by Apps Script.
+  var API_URL = 'https://script.google.com/macros/s/AKfycbyi0o4gcuPqRgsyf_uoYBFNolvTxJhPwyVGbGR-Vgh7UOOwzwyxsvnhseGE8wofn3foxQ/exec';
+  var STATIC = !BOOT;
+  if (!BOOT) BOOT = { state: 'loading', contactEmail: 'hoh@branksome.asia', contactName: 'Boarding Heads of House' };
+
+  var I18N = {
+    en: {
+      skip: 'Skip to main content', langLabel: 'Language', loading: 'Loading the contract…',
+      testRibbon: 'TEST MODE — signatures are recorded as tests and e-mails go to Student Records only.',
+      pageTitle: 'Boarding Community Contract',
+      lead: 'Please read this contract with your child and sign it online.',
+      student: 'Student', grade: 'Grade', house: 'House',
+      signingAs: 'Signing as',
+      'roleName@student': 'Student', 'roleName@advisor': 'Boarding Advisor', 'roleName@parent': 'Parent / guardian',
+      'lead@student': 'Please read your Boarding Community Contract carefully and sign it.',
+      'lead@advisor': 'Please read the contract and sign as this student’s Boarding Advisor.',
+      'step1@student': 'Read the whole contract below and the Middle and Senior School Code of Conduct.',
+      'step1@advisor': 'Read the contract below.',
+      'step2@student': 'Tick the confirmation boxes and check your name.',
+      'step2@advisor': 'Tick the confirmation box and check your name.',
+      'signHeading@student': 'Student Signature', 'signHeading@advisor': 'Boarding Advisor Signature',
+      sigHelp: 'If you cannot sign with a mouse, trackpad or finger, contact {email} to sign a paper copy instead.',
+      successPending: 'The contract will be complete once all three people (student, Boarding Advisor and parent/guardian) have signed. The completed contract will then be e-mailed to the family.',
+      'successPending@parent': 'The contract will be complete once the student and the Boarding Advisor have also signed. The completed contract will then be e-mailed to you.',
+      step1: 'Read the contract below together with your child.',
+      step2: 'Tick the three confirmations and enter your name.',
+      step3: 'Sign in the box with your mouse, trackpad or finger, then press Submit.',
+      englishNote: '',
+      signHeading: 'Parent / Guardian Signature',
+      declarationTr: '',
+      errSummary: 'Please fix the following:',
+      acksLegend: 'Please confirm',
+      ack_readContract: 'I have read the whole Boarding Community Contract.',
+      ack_codeOfConduct: 'I have read the Middle and Senior School Code of Conduct.',
+      ack_discussedWithChild: 'I have talked with my child about this contract and the Code of Conduct.',
+      nameLabel: 'Your full name', nameHint: 'As you would write it on a paper form.',
+      relLabel: 'Relationship to the student',
+      rel_Mother: 'Mother', rel_Father: 'Father', 'rel_Legal Guardian': 'Legal Guardian', rel_Other: 'Other',
+      relOtherLabel: 'Please specify (for example, Grandmother)',
+      sigLabel: 'Signature',
+      sigPlaceholder: 'Sign here with your mouse, trackpad or finger',
+      sigCanvasLabel: 'Signature area. Draw your signature with a mouse, trackpad or finger. If you cannot draw, choose Type.',
+      sigUndo: 'Undo', sigClear: 'Clear',
+      dateLabel: 'Date',
+      submit: 'Submit signature', submitting: 'Submitting…',
+      slow: 'This is taking longer than usual. Please keep this page open.',
+      verySlow: 'Still waiting for the school server. Check your internet connection, then press Submit again. You will not be signed twice.',
+      privacy: 'Your name, signature and the time of signing are stored securely by Branksome Hall Asia for boarding records.',
+      err_name_required: 'Enter your full name.',
+      err_name_invalid: 'Enter your name using letters (at least 2 characters).',
+      err_relationship_required: 'Choose your relationship to the student.',
+      err_relationshipOther_required: 'Describe your relationship to the student.',
+      err_acks_required: 'Tick all the confirmation boxes.',
+      err_signature_required: 'Add your signature.',
+      err_signature_tooSmall: 'Your signature is too small. Please sign across more of the box.',
+      err_signature_invalid: 'The signature could not be read. Clear it and sign again.',
+      err_signature_tooLarge: 'The signature could not be read. Clear it and sign again.',
+      err_network: 'We could not reach the school server. Check your internet connection and press Submit again. Your signature is still on this page.',
+      err_server: 'Something went wrong on our side. Please try again in a minute. If it keeps happening, contact {email}.',
+      err_busy: 'The system is busy. Please press Submit again.',
+      err_contractChanged: 'The contract was updated after you opened this page. Please reload the page to read and sign the latest version.',
+      err_form: 'Please check the form and try again.',
+      reload: 'Reload page',
+      successTitle: 'Thank you — your signature has been received',
+      successWhen: 'Signed on {date}.',
+      successMail: 'All signatures are complete. A copy of the completed contract has been e-mailed to {emails}.',
+      successNoMail: 'All signatures are complete. The school keeps the completed contract on file. For a copy, contact {email}.',
+      closeNote: 'You can now close this page.',
+      signedTitle: 'This contract has already been signed',
+      signedWho: 'Signed by {name} on {date}.',
+      signedHelp: 'If this is not right, please contact {email}.',
+      invalidTitle: 'This link is not valid',
+      invalidBody: 'Please open the link exactly as it appears in the e-mail from the school. If it still does not work, contact {email}.',
+      voidedTitle: 'This link is no longer active',
+      voidedBody: 'The school has replaced this link. Please use the most recent e-mail from the school, or contact {email}.',
+      errorTitle: 'The page could not be loaded',
+      errorBody: 'Please try again in a few minutes. If it keeps happening, contact {email}.',
+      tryAgain: 'Try again'
+    },
+    ko: {
+      skip: '본문으로 건너뛰기', langLabel: '언어', loading: '서약서를 불러오는 중입니다…',
+      testRibbon: '테스트 모드 — 서명은 테스트로 기록되며 이메일은 Student Records로만 발송됩니다.',
+      pageTitle: '기숙사 공동체 서약서',
+      lead: '자녀와 함께 서약서를 읽어 보신 후 온라인으로 서명해 주십시오.',
+      student: '학생', grade: '학년', house: '하우스',
+      signingAs: '서명자',
+      'roleName@student': '학생', 'roleName@advisor': 'Boarding Advisor', 'roleName@parent': '학부모 / 보호자',
+      'lead@student': '기숙사 공동체 서약서를 꼼꼼히 읽고 서명해 주세요.',
+      'lead@advisor': '서약서를 읽고 이 학생의 Boarding Advisor로서 서명해 주십시오.',
+      'step1@student': '아래 서약서 전문과 중·고등학교 행동강령(Code of Conduct)을 읽어 주세요.',
+      'step1@advisor': '아래 서약서를 읽어 주십시오.',
+      'step2@student': '확인 항목에 체크하고 이름을 확인해 주세요.',
+      'step2@advisor': '확인 항목에 체크하고 성함을 확인해 주십시오.',
+      'signHeading@student': '학생 서명', 'signHeading@advisor': 'Boarding Advisor 서명',
+      sigHelp: '마우스, 트랙패드 또는 손가락으로 서명하기 어려우시면 {email}에 연락해 종이 서약서에 서명하실 수 있습니다.',
+      successPending: '학생, Boarding Advisor, 학부모/보호자 세 명의 서명이 모두 완료되면 서약서가 완성되며, 완성본은 가정으로 이메일 발송됩니다.',
+      'successPending@parent': '학생과 Boarding Advisor의 서명까지 완료되면 서약서가 완성되며, 완성본을 이메일로 보내드립니다.',
+      step1: '아래 서약서를 자녀와 함께 읽어 주십시오.',
+      step2: '세 가지 확인 항목에 체크하고 성함을 입력해 주십시오.',
+      step3: '서명란에 마우스, 트랙패드 또는 손가락으로 서명한 후 [서명 제출]을 눌러 주십시오.',
+      englishNote: '서약서 본문은 영어로 제공되며, 영어 원문이 서명 대상입니다. 안내 문구만 한국어로 표시됩니다.',
+      signHeading: '학부모 / 보호자 서명',
+      declarationTr: '(번역) 아래에 서명함으로써, 본 서약서와 중·고등학교 행동강령(Code of Conduct)을 읽고 이해하였으며 두 가지 모두를 따를 것에 동의합니다.',
+      errSummary: '다음 항목을 확인해 주십시오:',
+      acksLegend: '확인 사항',
+      ack_readContract: '기숙사 공동체 서약서 전문을 읽었습니다.',
+      ack_codeOfConduct: '중·고등학교 행동강령(Code of Conduct)을 읽었습니다.',
+      ack_discussedWithChild: '본 서약서와 행동강령에 대해 자녀와 이야기를 나누었습니다.',
+      nameLabel: '성함 (전체 이름)', nameHint: '종이 서류에 적으시는 것과 같이 입력해 주십시오.',
+      relLabel: '학생과의 관계',
+      rel_Mother: '어머니', rel_Father: '아버지', 'rel_Legal Guardian': '법정 보호자', rel_Other: '기타',
+      relOtherLabel: '관계를 입력해 주십시오 (예: 할머니)',
+      sigLabel: '서명',
+      sigPlaceholder: '여기에 마우스, 트랙패드 또는 손가락으로 서명해 주십시오',
+      sigCanvasLabel: '서명란. 마우스, 트랙패드 또는 손가락으로 서명하십시오. 그리기가 어려우시면 [입력하기]를 선택하십시오.',
+      sigUndo: '되돌리기', sigClear: '지우기',
+      dateLabel: '날짜',
+      submit: '서명 제출', submitting: '제출 중…',
+      slow: '평소보다 시간이 걸리고 있습니다. 이 페이지를 닫지 말고 기다려 주십시오.',
+      verySlow: '학교 서버의 응답이 없습니다. 인터넷 연결을 확인한 후 [서명 제출]을 다시 눌러 주십시오. 중복 서명되지 않습니다.',
+      privacy: '입력하신 성함, 서명 및 서명 시각은 기숙사 기록을 위해 브랭섬홀 아시아에서 안전하게 보관합니다.',
+      err_name_required: '성함을 입력해 주십시오.',
+      err_name_invalid: '성함을 글자로 2자 이상 입력해 주십시오.',
+      err_relationship_required: '학생과의 관계를 선택해 주십시오.',
+      err_relationshipOther_required: '학생과의 관계를 입력해 주십시오.',
+      err_acks_required: '확인 항목에 모두 체크해 주십시오.',
+      err_signature_required: '서명해 주십시오.',
+      err_signature_tooSmall: '서명이 너무 작습니다. 서명란을 더 넓게 사용해 다시 서명해 주십시오.',
+      err_signature_invalid: '서명을 인식하지 못했습니다. 지우고 다시 서명해 주십시오.',
+      err_signature_tooLarge: '서명을 인식하지 못했습니다. 지우고 다시 서명해 주십시오.',
+      err_network: '학교 서버에 연결하지 못했습니다. 인터넷 연결을 확인한 후 [서명 제출]을 다시 눌러 주십시오. 작성하신 서명은 그대로 남아 있습니다.',
+      err_server: '일시적인 오류가 발생했습니다. 잠시 후 다시 시도해 주십시오. 계속 발생하면 {email}에 문의해 주십시오.',
+      err_busy: '접속이 많습니다. [서명 제출]을 다시 눌러 주십시오.',
+      err_contractChanged: '페이지를 연 뒤 서약서 내용이 변경되었습니다. 페이지를 새로 고쳐 최신 서약서를 읽고 서명해 주십시오.',
+      err_form: '입력 내용을 확인한 후 다시 시도해 주십시오.',
+      reload: '새로 고침',
+      successTitle: '감사합니다. 서명이 접수되었습니다',
+      successWhen: '서명 일시: {date}',
+      successMail: '모든 서명이 완료되었습니다. 완성된 서약서 사본을 {emails}(으)로 보내드렸습니다.',
+      successNoMail: '모든 서명이 완료되었습니다. 완성본은 학교에서 보관하며, 사본이 필요하시면 {email}에 문의해 주십시오.',
+      closeNote: '이제 이 페이지를 닫으셔도 됩니다.',
+      signedTitle: '이미 서명이 완료된 서약서입니다',
+      signedWho: '{name} 님이 {date}에 서명하셨습니다.',
+      signedHelp: '사실과 다르다면 {email}에 문의해 주십시오.',
+      invalidTitle: '유효하지 않은 링크입니다',
+      invalidBody: '학교에서 보낸 이메일의 링크를 그대로 열어 주십시오. 계속 열리지 않으면 {email}에 문의해 주십시오.',
+      voidedTitle: '더 이상 사용할 수 없는 링크입니다',
+      voidedBody: '학교에서 새 링크를 발급했습니다. 가장 최근에 받으신 학교 이메일의 링크를 사용하시거나 {email}에 문의해 주십시오.',
+      errorTitle: '페이지를 불러오지 못했습니다',
+      errorBody: '잠시 후 다시 시도해 주십시오. 계속 발생하면 {email}에 문의해 주십시오.',
+      tryAgain: '다시 시도'
+    },
+    zh: {
+      skip: '跳至主要内容', langLabel: '语言', loading: '正在加载协议…',
+      testRibbon: '测试模式 — 签名仅作测试记录，电子邮件只发送至 Student Records。',
+      pageTitle: '寄宿社区协议',
+      lead: '请与孩子一起阅读本协议，然后在线签名。',
+      student: '学生', grade: '年级', house: '宿舍',
+      signingAs: '签署人',
+      'roleName@student': '学生', 'roleName@advisor': '寄宿导师（Boarding Advisor）', 'roleName@parent': '家长／监护人',
+      'lead@student': '请仔细阅读你的寄宿社区协议并签名。',
+      'lead@advisor': '请阅读本协议，并以该学生寄宿导师的身份签名。',
+      'step1@student': '阅读以下协议全文及初中和高中部行为准则（Code of Conduct）。',
+      'step1@advisor': '阅读以下协议。',
+      'step2@student': '勾选确认项并核对你的姓名。',
+      'step2@advisor': '勾选确认项并核对您的姓名。',
+      'signHeading@student': '学生签名', 'signHeading@advisor': '寄宿导师签名',
+      sigHelp: '如无法使用鼠标、触控板或手指签名，请联系 {email}，改为签署纸质协议。',
+      successPending: '学生、寄宿导师和家长／监护人三方全部签名后，协议即告完成，完整协议将通过电子邮件发送给家庭。',
+      'successPending@parent': '学生和寄宿导师也签名后，协议即告完成，届时我们会将完整协议通过电子邮件发送给您。',
+      step1: '请与孩子一起阅读以下协议。',
+      step2: '勾选三项确认并填写您的姓名。',
+      step3: '使用鼠标、触控板或手指在签名框内签名，然后点击「提交签名」。',
+      englishNote: '协议正文为英文，您签署的是英文原文。页面提示仅以中文显示。',
+      signHeading: '家长／监护人签名',
+      declarationTr: '（译文）在下方签名即表示，我们确认已阅读并理解本协议及初中和高中部行为准则（Code of Conduct），并同意遵守两者。',
+      errSummary: '请检查以下内容：',
+      acksLegend: '请确认',
+      ack_readContract: '我已阅读寄宿社区协议全文。',
+      ack_codeOfConduct: '我已阅读初中和高中部行为准则（Code of Conduct）。',
+      ack_discussedWithChild: '我已与孩子讨论过本协议和行为准则。',
+      nameLabel: '您的全名', nameHint: '请按照您在纸质表格上的写法填写。',
+      relLabel: '与学生的关系',
+      rel_Mother: '母亲', rel_Father: '父亲', 'rel_Legal Guardian': '法定监护人', rel_Other: '其他',
+      relOtherLabel: '请注明（例如：祖母）',
+      sigLabel: '签名',
+      sigPlaceholder: '请用鼠标、触控板或手指在此签名',
+      sigCanvasLabel: '签名区域。请用鼠标、触控板或手指签名。如无法手写，请选择「输入」。',
+      sigUndo: '撤销', sigClear: '清除',
+      dateLabel: '日期',
+      submit: '提交签名', submitting: '正在提交…',
+      slow: '处理时间比平时长，请不要关闭此页面。',
+      verySlow: '学校服务器仍未响应。请检查网络连接后再次点击「提交签名」，不会重复签名。',
+      privacy: '您的姓名、签名和签署时间将由 Branksome Hall Asia 安全保存，用于寄宿记录。',
+      err_name_required: '请填写您的全名。',
+      err_name_invalid: '请用文字填写姓名（至少 2 个字符）。',
+      err_relationship_required: '请选择您与学生的关系。',
+      err_relationshipOther_required: '请填写您与学生的关系。',
+      err_acks_required: '请勾选所有确认项。',
+      err_signature_required: '请签名。',
+      err_signature_tooSmall: '签名太小，请在签名框中写得大一些。',
+      err_signature_invalid: '无法识别签名，请清除后重新签名。',
+      err_signature_tooLarge: '无法识别签名，请清除后重新签名。',
+      err_network: '无法连接学校服务器。请检查网络连接后再次点击「提交签名」。您的签名仍保留在此页面。',
+      err_server: '系统出现问题，请稍后再试。如问题持续，请联系 {email}。',
+      err_busy: '系统繁忙，请再次点击「提交签名」。',
+      err_contractChanged: '您打开此页面后协议内容已更新。请刷新页面，阅读并签署最新版本。',
+      err_form: '请检查表格内容后重试。',
+      reload: '刷新页面',
+      successTitle: '谢谢，我们已收到您的签名',
+      successWhen: '签署时间：{date}',
+      successMail: '所有签名均已完成。完整协议副本已发送至 {emails}。',
+      successNoMail: '所有签名均已完成。学校将存档完整协议。如需副本，请联系 {email}。',
+      closeNote: '您现在可以关闭此页面。',
+      signedTitle: '此协议已签署',
+      signedWho: '{name} 已于 {date} 签署。',
+      signedHelp: '如有疑问，请联系 {email}。',
+      invalidTitle: '链接无效',
+      invalidBody: '请直接打开学校邮件中的链接。如仍无法打开，请联系 {email}。',
+      voidedTitle: '此链接已失效',
+      voidedBody: '学校已发送新的链接。请使用学校最新邮件中的链接，或联系 {email}。',
+      errorTitle: '页面无法加载',
+      errorBody: '请稍后再试。如问题持续，请联系 {email}。',
+      tryAgain: '重试'
+    }
+  };
+
+  // ── Helpers ──────────────────────────────────────────────────────────────
+  var $ = function (id) { return document.getElementById(id); };
+  var store = {
+    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } }
+  };
+  var lang = pickLang();
+  var currentView = null;
+  var fieldErrors = {};     // field -> code, re-rendered on language change
+  var statusMsg = null;     // { key, cls }
+  var resultData = null;
+
+  function pickLang() {
+    var saved = store.get('bcc-lang');
+    if (saved && I18N[saved]) return saved;
+    var nav = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('ko') === 0) return 'ko';
+    if (nav.indexOf('zh') === 0) return 'zh';
+    return 'en';
+  }
+  var ROLE = 'parent';
+  /** Role-specific text ("key@role") wins over the shared text ("key"). */
+  function t(key) {
+    var d = I18N[lang] || I18N.en, rk = key + '@' + ROLE;
+    if (d[rk] != null) return d[rk];
+    if (I18N.en[rk] != null) return I18N.en[rk];
+    return d[key] != null ? d[key] : (I18N.en[key] || '');
+  }
+
+  /** Fills el with the message for key; {vars} may be strings or DOM nodes. */
+  function fill(el, key, vars) {
+    el.textContent = '';
+    var parts = t(key).split(/(\{\w+\})/);
+    parts.forEach(function (p) {
+      var m = /^\{(\w+)\}$/.exec(p);
+      if (m && vars && vars[m[1]] != null) {
+        var v = vars[m[1]];
+        el.appendChild(typeof v === 'string' ? document.createTextNode(v) : v.cloneNode(true));
+      } else if (p) {
+        el.appendChild(document.createTextNode(p));
+      }
+    });
+  }
+  /** "Boarding Heads of House (hoh@…)" with a mailto link. */
+  function mailLink() {
+    var f = document.createDocumentFragment();
+    if (BOOT.contactName) f.appendChild(document.createTextNode(BOOT.contactName + ' ('));
+    var a = document.createElement('a');
+    a.href = 'mailto:' + BOOT.contactEmail;
+    a.textContent = BOOT.contactEmail;
+    f.appendChild(a);
+    if (BOOT.contactName) f.appendChild(document.createTextNode(')'));
+    return f;
+  }
+
+  // ── Language ─────────────────────────────────────────────────────────────
+  function applyLang() {
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n'));
+      if (el.id === 'englishNote' || el.id === 'declTr') { el.hidden = !v; }
+      el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+    fill($('sigHelp'), 'sigHelp', { email: mailLink() });
+    renderAcks();
+    renderRelationships();
+    renderErrors(false);
+    renderStatus();
+    if (currentView) renderViewText(currentView);
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lang = b.getAttribute('data-lang');
+      store.set('bcc-lang', lang);
+      applyLang();
+    });
+  });
+
+  // ── Views ────────────────────────────────────────────────────────────────
+  function show(view, focus) {
+    ['loading', 'open', 'success', 'signed', 'invalid', 'voided', 'error'].forEach(function (v) {
+      $('view-' + v).hidden = v !== view;
+    });
+    currentView = view;
+    renderViewText(view);
+    if (focus) {
+      window.scrollTo(0, 0);
+      var h = $('view-' + view).querySelector('h1');
+      if (h) h.focus();
+    }
+  }
+  function renderViewText(view) {
+    var d = resultData || BOOT;
+    if (view === 'success') {
+      fill($('successWhen'), 'successWhen', { date: d.signedAt || '' });
+      if (!d.complete) fill($('successMail'), 'successPending');
+      else if (d.emailedTo && d.emailedTo.length) fill($('successMail'), 'successMail', { emails: d.emailedTo.join(', ') });
+      else fill($('successMail'), 'successNoMail', { email: mailLink() });
+    } else if (view === 'signed') {
+      fill($('signedWho'), 'signedWho', { name: d.signedBy || '—', date: d.signedAt || '' });
+      fill($('signedHelp'), 'signedHelp', { email: mailLink() });
+    } else if (view === 'invalid') {
+      fill($('invalidBody'), 'invalidBody', { email: mailLink() });
+    } else if (view === 'voided') {
+      fill($('voidedBody'), 'voidedBody', { email: mailLink() });
+    } else if (view === 'error') {
+      fill($('errorBody'), 'errorBody', { email: mailLink() });
+    }
+  }
+  $('retryLink').addEventListener('click', function (e) {
+    if (STATIC || !BOOT.appUrl) { e.preventDefault(); window.location.reload(); }
+  });
+
+  // ── Form: relationship radios ────────────────────────────────────────────
+  var ackKeys = [];
+  function renderAcks() {
+    var box = $('ackList');
+    var checked = [].slice.call(box.querySelectorAll('input:checked')).map(function (i) { return i.value; });
+    box.textContent = '';
+    ackKeys.forEach(function (k, i) {
+      var label = document.createElement('label');
+      label.className = 'check';
+      var input = document.createElement('input');
+      input.type = 'checkbox'; input.name = 'acks'; input.value = k;
+      if (i === 0) input.id = 'ack1';
+      input.checked = checked.indexOf(k) >= 0;
+      input.addEventListener('change', function () {
+        markDirty();
+        if (box.querySelectorAll('input:checked').length === ackKeys.length) clearFieldError('acks');
+      });
+      var span = document.createElement('span');
+      span.textContent = t('ack_' + k);
+      label.appendChild(input); label.appendChild(span);
+      box.appendChild(label);
+    });
+  }
+
+  var relOptions = [];
+  function renderRelationships() {
+    var box = $('relRadios');
+    var checked = (box.querySelector('input:checked') || {}).value;
+    box.textContent = '';
+    relOptions.forEach(function (r, i) {
+      var label = document.createElement('label');
+      label.className = 'radio';
+      var input = document.createElement('input');
+      input.type = 'radio'; input.name = 'relationship'; input.value = r;
+      if (i === 0) input.id = 'rel0';
+      if (r === checked) input.checked = true;
+      input.addEventListener('change', onRelChange);
+      var span = document.createElement('span');
+      span.textContent = t('rel_' + r) || r;
+      label.appendChild(input); label.appendChild(span);
+      box.appendChild(label);
+    });
+  }
+  function onRelChange() {
+    var v = (document.querySelector('input[name=relationship]:checked') || {}).value;
+    $('relOtherBox').hidden = v !== 'Other';
+    markDirty();
+    clearFieldError('relationship');
+    if (v !== 'Other') clearFieldError('relationshipOther');
+  }
+
+  // ── Signature pad ────────────────────────────────────────────────────────
+  var canvas = $('sigCanvas');
+  var ctx = canvas.getContext('2d');
+  var strokes = [];         // arrays of {x,y} in reference (CSS px at first stroke) space
+  var ref = null;           // {w,h}
+  var drawing = null;
+  var INK = '#1B1D24';
+
+  function size() {
+    var r = canvas.getBoundingClientRect();
+    return { w: Math.max(1, r.width), h: Math.max(1, r.height) };
+  }
+  function scale() {
+    if (!ref) return 1;
+    var s = size();
+    return Math.min(s.w / ref.w, s.h / ref.h);
+  }
+  function resizeCanvas() {
+    var s = size(), dpr = Math.min(window.devicePixelRatio || 1, 3);
+    canvas.width = Math.round(s.w * dpr);
+    canvas.height = Math.round(s.h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+  function strokeStyle(c, k) {
+    c.strokeStyle = INK; c.fillStyle = INK;
+    c.lineWidth = 2.4 * k; c.lineCap = 'round'; c.lineJoin = 'round';
+  }
+  function drawStroke(c, pts, k, ox, oy) {
+    ox = ox || 0; oy = oy || 0;
+    if (!pts.length) return;
+    if (pts.length === 1) {
+      c.beginPath(); c.arc((pts[0].x - ox) * k, (pts[0].y - oy) * k, 1.4 * k, 0, Math.PI * 2); c.fill();
+      return;
+    }
+    c.beginPath();
+    c.moveTo((pts[0].x - ox) * k, (pts[0].y - oy) * k);
+    for (var i = 1; i < pts.length - 1; i++) {
+      var mx = (pts[i].x + pts[i + 1].x) / 2, my = (pts[i].y + pts[i + 1].y) / 2;
+      c.quadraticCurveTo((pts[i].x - ox) * k, (pts[i].y - oy) * k, (mx - ox) * k, (my - oy) * k);
+    }
+    var last = pts[pts.length - 1];
+    c.lineTo((last.x - ox) * k, (last.y - oy) * k);
+    c.stroke();
+  }
+  function redraw() {
+    var s = size();
+    ctx.clearRect(0, 0, s.w, s.h);
+    var k = scale();
+    strokeStyle(ctx, k);
+    strokes.forEach(function (st) { drawStroke(ctx, st, k); });
+    updatePadUi();
+  }
+  function point(e) {
+    var r = canvas.getBoundingClientRect(), k = scale();
+    return { x: (e.clientX - r.left) / k, y: (e.clientY - r.top) / k };
+  }
+  canvas.addEventListener('pointerdown', function (e) {
+    if (e.button !== undefined && e.button > 0) return;
+    if (!ref) ref = size();
+    e.preventDefault();
+    try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* old browsers */ }
+    drawing = [point(e)];
+    strokes.push(drawing);
+    redraw();
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (!drawing) return;
+    e.preventDefault();
+    var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+    if (!evs.length) evs = [e];
+    evs.forEach(function (ev) { drawing.push(point(ev)); });
+    redraw();
+  });
+  function endStroke() {
+    if (!drawing) return;
+    drawing = null;
+    markDirty();
+    clearFieldError('signature');
+    updatePadUi();
+  }
+  canvas.addEventListener('pointerup', endStroke);
+  canvas.addEventListener('pointercancel', endStroke);
+  canvas.addEventListener('lostpointercapture', endStroke);
+
+  function inkStats() {
+    var len = 0, minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity, n = 0;
+    strokes.forEach(function (st) {
+      st.forEach(function (p, i) {
+        n++;
+        minX = Math.min(minX, p.x); minY = Math.min(minY, p.y); maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+        if (i) len += Math.hypot(p.x - st[i - 1].x, p.y - st[i - 1].y);
+      });
+    });
+    return { n: n, len: len, minX: minX, minY: minY, w: maxX - minX, h: maxY - minY };
+  }
+  function updatePadUi() {
+    var has = strokes.length > 0;
+    $('padPh').hidden = has;
+    $('padWrap').classList.toggle('has-ink', has);
+    $('sigUndo').disabled = !has;
+    $('sigClear').disabled = !has;
+  }
+  $('sigUndo').addEventListener('click', function () { strokes.pop(); if (!strokes.length) { ref = null; canvas.focus(); } redraw(); });
+  $('sigClear').addEventListener('click', function () { strokes = []; ref = null; redraw(); canvas.focus(); });
+
+  /** Crops to the ink and returns a PNG data URL at 2× resolution. */
+  function drawnPng() {
+    var s = inkStats(), pad = 10, k = 2;
+    var w = Math.ceil((s.w + pad * 2) * k), h = Math.ceil((s.h + pad * 2) * k);
+    var c = document.createElement('canvas');
+    c.width = Math.max(w, 60); c.height = Math.max(h, 30);
+    var cx = c.getContext('2d');
+    strokeStyle(cx, k);
+    strokes.forEach(function (st) { drawStroke(cx, st, k, s.minX - pad, s.minY - pad); });
+    return c.toDataURL('image/png');
+  }
+
+  // ── Validation ───────────────────────────────────────────────────────────
+  function cleanText(s) {
+    s = String(s || '');
+    if (s.normalize) s = s.normalize('NFC');
+    return s.replace(/[\u0000-\u001F\u007F-\u009F​-‏‪-‮⁠-⁯﻿]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  var LETTER = (function () { try { return new RegExp('\\p{L}', 'u'); } catch (e) { return /[A-Za-zÀ-￿]/; } })();
+
+  function validate() {
+    var errs = {};
+    var acks = [].slice.call(document.querySelectorAll('input[name=acks]:checked')).map(function (i) { return i.value; });
+    if (ackKeys.some(function (k) { return acks.indexOf(k) < 0; })) errs.acks = 'required';
+    var name = cleanText($('name').value);
+    if (!name) errs.name = 'required';
+    else if (name.length < 2 || !LETTER.test(name)) errs.name = 'invalid';
+    var rel = (document.querySelector('input[name=relationship]:checked') || {}).value;
+    if (ROLE === 'parent') {
+      if (!rel) errs.relationship = 'required';
+      else if (rel === 'Other' && cleanText($('relOther').value).length < 2) errs.relationshipOther = 'required';
+    }
+    var s = inkStats();
+    if (!s.n) errs.signature = 'required';
+    else if (s.len < 40 || Math.max(s.w, s.h) < 30) errs.signature = 'tooSmall';
+    return { errs: errs, acks: acks, name: name, rel: rel };
+  }
+
+  var FIELD_ORDER = ['acks', 'name', 'relationship', 'relationshipOther', 'signature', 'form'];
+  var FIELD_FOCUS = { acks: 'ack1', name: 'name', relationship: 'rel0', relationshipOther: 'relOther', signature: 'sigField' };
+
+  function renderErrors(focusSummary) {
+    var list = $('errorList');
+    list.textContent = '';
+    var any = false;
+    FIELD_ORDER.forEach(function (f) {
+      var code = fieldErrors[f];
+      var el = $(f + '-error');
+      var msg = code ? t('err_' + f + '_' + code) || t('err_form') : '';
+      if (el) { el.hidden = !code; el.textContent = msg; }
+      if (!code) return;
+      any = true;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + (FIELD_FOCUS[f] || 'signForm');
+      a.textContent = msg;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = f === 'signature' ? canvas : $(FIELD_FOCUS[f]);
+        if (target) {
+          target.scrollIntoView({ block: 'center' });
+          if (target.focus) target.focus({ preventScroll: true });
+        }
+      });
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    $('errorSummary').hidden = !any;
+    $('name').setAttribute('aria-invalid', String(!!fieldErrors.name));
+    $('relOther').setAttribute('aria-invalid', String(!!fieldErrors.relationshipOther));
+    $('acksGroup').classList.toggle('group-invalid', !!fieldErrors.acks);
+    $('relGroup').classList.toggle('group-invalid', !!fieldErrors.relationship);
+    $('padWrap').classList.toggle('invalid', !!fieldErrors.signature);
+    if (any && focusSummary) {
+      $('errorSummary').scrollIntoView({ block: 'start' });
+      $('errorSummary').focus({ preventScroll: true });
+    }
+  }
+  function clearFieldError(f) {
+    if (!fieldErrors[f]) return;
+    delete fieldErrors[f];
+    renderErrors(false);
+  }
+  $('name').addEventListener('input', function () { markDirty(); clearFieldError('name'); });
+  $('relOther').addEventListener('input', function () { markDirty(); clearFieldError('relationshipOther'); });
+
+  // ── Submit ───────────────────────────────────────────────────────────────
+  var busy = false, done = false, dirty = false, slowTimer = null, stuckTimer = null;
+  function markDirty() { dirty = true; }
+  window.addEventListener('beforeunload', function (e) {
+    if (dirty && !done) { e.preventDefault(); e.returnValue = ''; return ''; }
+  });
+
+  function setStatus(key, cls) { statusMsg = key ? { key: key, cls: cls || '' } : null; renderStatus(); }
+  function renderStatus() {
+    var el = $('submitStatus');
+    if (!statusMsg) { el.hidden = true; el.textContent = ''; el.className = 'status'; return; }
+    el.hidden = false;
+    el.className = 'status ' + statusMsg.cls;
+    fill(el, statusMsg.key, { email: mailLink() });
+    if (statusMsg.key === 'err_contractChanged' && (STATIC || BOOT.appUrl)) {
+      var a = document.createElement('a');
+      a.href = STATIC ? window.location.href.split('#')[0] : BOOT.appUrl + '?t=' + encodeURIComponent(BOOT.token);
+      a.textContent = ' ' + t('reload');
+      a.style.marginLeft = '6px';
+      el.appendChild(a);
+    }
+  }
+  function setBusy(b) {
+    busy = b;
+    $('submitBtn').disabled = b;
+    $('submitBtn').setAttribute('aria-busy', String(b));
+    $('spin').hidden = !b;
+    $('submitText').textContent = t(b ? 'submitting' : 'submit');
+    $('submitText').setAttribute('data-i18n', b ? 'submitting' : 'submit');
+    clearTimeout(slowTimer); clearTimeout(stuckTimer);
+    if (b) {
+      slowTimer = setTimeout(function () { if (busy) setStatus('slow', 'warn'); }, 12000);
+      stuckTimer = setTimeout(function () {
+        // Let the parent retry; the server refuses a second signature, so this is safe.
+        if (busy) { setBusy(false); setStatus('verySlow', 'err'); }
+      }, 60000);
+    }
+  }
+
+  $('signForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy || done) return;
+    var v = validate();
+    fieldErrors = v.errs;
+    renderErrors(true);
+    if (Object.keys(v.errs).length) return;
+
+    var signature;
+    try {
+      signature = drawnPng();
+    } catch (err) {
+      fieldErrors = { signature: 'invalid' };
+      renderErrors(true);
+      return;
+    }
+    var payload = {
+      token: BOOT.token,
+      contractHash: BOOT.contract && BOOT.contract.hash,
+      name: v.name,
+      relationship: ROLE === 'parent' ? v.rel : '',
+      relationshipOther: ROLE === 'parent' ? cleanText($('relOther').value) : '',
+      acks: v.acks,
+      signature: signature,
+      client: {
+        ua: String(navigator.userAgent || '').slice(0, 200),
+        tz: (function () { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (err) { return ''; } })(),
+        lang: lang,
+        screen: (window.screen ? screen.width + 'x' + screen.height : '')
+      }
+    };
+    setStatus(null);
+    setBusy(true);
+    callServer('submit', { payload: payload }, onResult, onFailure);
+  });
+
+  /**
+   * Inside Apps Script: google.script.run. On the school website: POST to the
+   * API as text/plain (no CORS preflight) and without cookies, so the Google
+   * accounts signed in on the device never matter.
+   */
+  function callServer(action, body, ok, fail) {
+    if (!STATIC && window.google && google.script && google.script.run) {
+      try {
+        google.script.run.withSuccessHandler(ok).withFailureHandler(fail).submitSignature(body.payload);
+      } catch (err) { fail(err); }
+      return;
+    }
+    var finished = false;
+    var timer = setTimeout(function () { if (!finished) { finished = true; fail(new Error('timeout')); } }, 90000);
+    var req = { action: action };
+    Object.keys(body).forEach(function (k) { req[k] = body[k]; });
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(req),
+      credentials: 'omit',
+      cache: 'no-store',
+      redirect: 'follow'
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function (res) {
+      if (finished) return;
+      finished = true; clearTimeout(timer); ok(res);
+    }).catch(function (err) {
+      if (finished) return;
+      finished = true; clearTimeout(timer); fail(err);
+    });
+  }
+
+  function onResult(res) {
+    if (done) return;
+    setBusy(false);
+    res = res || {};
+    if (res.ok || res.code === 'ALREADY_SIGNED') {
+      done = true;
+      resultData = res.ok ? res : { signedAt: res.signedAt, complete: res.complete, emailedTo: [] };
+      show('success', true);
+      return;
+    }
+    switch (res.code) {
+      case 'VALIDATION':
+        fieldErrors = res.fields || { form: 'invalid' };
+        if (fieldErrors.form) fieldErrors = { form: 'invalid' };
+        renderErrors(true);
+        break;
+      case 'CONTRACT_CHANGED': setStatus('err_contractChanged', 'err'); break;
+      case 'BUSY': setStatus('err_busy', 'err'); break;
+      case 'INVALID_LINK': show('invalid', true); break;
+      case 'VOIDED': show('voided', true); break;
+      default: setStatus('err_server', 'err');
+    }
+  }
+  function onFailure() {
+    if (done) return;
+    setBusy(false);
+    setStatus('err_network', 'err');
+  }
+
+  // ── Boot ─────────────────────────────────────────────────────────────────
+  function boot() {
+    ROLE = BOOT.role || 'parent';
+    ackKeys = BOOT.acks || [];
+    relOptions = BOOT.relationships || [];
+    $('testRibbon').hidden = !BOOT.testMode;
+    if (BOOT.state === 'open') {
+      $('stuName').textContent = (BOOT.student && BOOT.student.name) || '—';
+      $('stuGrade').textContent = (BOOT.student && BOOT.student.grade) || '';
+      $('stuHouse').textContent = (BOOT.student && BOOT.student.house) || '';
+      $('stuGradeBox').hidden = !$('stuGrade').textContent;
+      $('stuHouseBox').hidden = !$('stuHouse').textContent;
+      $('today').textContent = BOOT.today || '';
+      $('name').value = BOOT.prefillName || '';
+      $('relGroup').hidden = ROLE !== 'parent';
+    }
+    applyLang();
+    var state = ['open', 'signed', 'invalid', 'voided', 'error'].indexOf(BOOT.state) >= 0 ? BOOT.state : 'error';
+    show(state, false);
+    if (state === 'open') {
+      resizeCanvas();
+      var rt;
+      window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(resizeCanvas, 120); });
+    }
+  }
+  /** Static page: read the token from the address and ask the API for the view. */
+  function start() {
+    if (!STATIC) { boot(); return; }
+    applyLang();
+    show('loading', false);
+    var token = '';
+    try { token = (new URLSearchParams(window.location.search).get('t') || '').trim(); } catch (e) { /* very old browser */ }
+    // Always ask the server, even for a malformed link, so the contact shown matches test/live mode.
+    callServer('view', { token: token }, function (res) {
+      if (!res || !res.state) { BOOT.state = 'error'; boot(); return; }
+      BOOT = res;
+      if (res.contractHtml) $('contractBody').innerHTML = res.contractHtml; // server-rendered from the fixed contract text
+      if (res.declaration) $('declText').textContent = res.declaration;
+      boot();
+    }, function () {
+      BOOT.state = 'error';
+      boot();
+    });
+  }
+  start();
+})();
+</script>
+</body>
+</html>
